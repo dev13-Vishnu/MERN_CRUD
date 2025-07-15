@@ -11,7 +11,7 @@ export const create = async(req,res) => {
         return res.status(400).json({message:"User already exists!"})
     }
     const saveData = await newUser.save();
-    res.status(200).json(saveData);
+    res.status(200).json({message: "User created successfully."});
     }catch(err){
         res.status(500).json({errorMessage: err.message})
     }
@@ -49,7 +49,7 @@ export const updateUser =async (req,res) => {
         if(!userData) {
             return res.status(404).josn({message: "User not found."})
         }
-        res.status(200).json(userData)
+        res.status(200).json({message:"User updated successfully"})
     } catch (error) {
         res.status(500).json({errorMessage: error.message})
 
@@ -62,7 +62,7 @@ export const deleteUser = async (req,res) => {
     if(!user) {
         return res.status(404).json({message:"User not found."})
     }
-    await User.findByIdAndDelete();
+    await User.findByIdAndDelete(id);
     res.status(200).json({message:"User deleted successfully."})
     } catch (error) {
         res.status(500).json({errorMessage: error.message})
