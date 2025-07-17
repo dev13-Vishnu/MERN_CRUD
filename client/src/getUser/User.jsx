@@ -31,8 +31,14 @@ const User = () => {
         <Link to = '/add' type="button" className="btn btn-primary">
             Add User <i className="fa-solid fa-user-plus"></i>
         </Link>
+        {(users.length === 0)? (
+            <div className="noData">
+                <h3>No Data to display.</h3>
+                <p>Please add new user</p>
 
-      <table className="table table-bordered">
+            </div>
+        ):(
+            <table className="table table-bordered">
         <thead>
             <tr>
                 <th scope='col'>S.No</th>
@@ -64,6 +70,8 @@ const User = () => {
             })}
         </tbody>
       </table>
+        )}
+      
     </div>
   )
 }
